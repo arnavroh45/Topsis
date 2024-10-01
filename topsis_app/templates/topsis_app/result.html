@@ -1,0 +1,69 @@
+{% extends 'topsis_app/base.html' %}
+
+{% load custom_filters %}
+
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">TOPSIS Analysis Results</h1>
+        <div class="card mb-4"></div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Date</th>
+                                <th>Input File</th>
+                                <th>Weights</th>
+                                <th>Impacts</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            <tr>
+                                <td>{{ analysis.date }}</td>
+                                <td>{{ analysis.input_file }}</td>
+                                <td>{{ analysis.weights }}</td>
+                                <td>{{ analysis.impacts }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Table -->
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Results Table
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Index</th>
+                                <th>TOPSIS Score</th>
+                                <th>Rank</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for index, score in topsis_score.items %}
+                            <tr>
+                                <td>{{ index }}</td>
+                                <td>{{ score }}</td>
+                                <td>{{ rank|get_item:index }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button to Go Back -->
+        <div class="text-center mt-4">
+            <a href="/topsis" class="btn btn-secondary">Perform Another Analysis</a>
+        </div>
+    </div>
+{% endblock body %}

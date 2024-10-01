@@ -1,0 +1,46 @@
+{% extends 'topsis_app/base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Welcome {{request.user}} to TOPSIS Algorithm</h1>
+
+  <!-- Form Section -->
+  <form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+      <div class="mb-3">
+          <label for="inputFile" class="form-label">Input CSV File</label>
+          <input type="file" class="form-control" id="inputFile" name="input_file" required>
+      </div>
+
+      <div class="mb-3">
+          <label for="weights" class="form-label">Weights (comma-separated)</label>
+          <input type="text" class="form-control" id="weights" name="weights" placeholder="e.g., 2, 3, 1, 4, 1" required>
+      </div>
+
+      <div class="mb-3">
+          <label for="impacts" class="form-label">Impacts (comma-separated, + or -)</label>
+          <input type="text" class="form-control" id="impacts" name="impacts" placeholder="e.g., +, -, +, -, +" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <!-- Results Section -->
+  <div class="card mt-5 shadow p-4">
+      {% if result %}
+        <h3 class="mb-4 text-center">Results</h3>
+        <!-- Table for displaying TOPSIS results -->
+        <div class="table-responsive" style="display: flex; justify-content: center; align-items: center;">
+          {{ result|safe }}
+        </div>          
+      {% else %}
+        <p class="text-center">No results to display yet. Please submit the form.</p>
+      {% endif %}
+    </div>
+</div>
+
+<a href="/history">View Your TOPSIS Analysis History</a>
+
+{%endblock body%}

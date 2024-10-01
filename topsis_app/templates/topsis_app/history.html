@@ -1,0 +1,6 @@
+<h2>Your TOPSIS Analysis History</h2>
+<ul>
+    {% for analysis in analyses %}
+        <li>{{ analysis.date }} - <a href="{% url 'view_analysis' analysis.id %}">View Result</a></li>
+    {% endfor %}
+</ul>
