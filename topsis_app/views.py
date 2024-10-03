@@ -7,15 +7,34 @@ import pandas as pd
 import numpy as np
 from django.core.files.storage import default_storage
 from .models import TopsisAnalysis, TopsisResult
+from django.contrib.auth.decorators import login_required
 import json
+
+@login_required(login_url='/register')
+def home(request):
+    return render(request, 'topsis_app/home.html')
+
+def RegisterUser(request):
+    if request.method=='POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = User.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name)
+        user.save()
+        return redirect('/login')
+    else:
+        return render(request, 'topsis_app/register.html')
+
 def loginUser(request):
     if request.method=='POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
+        print(username, password)
         if user is not None:
             login(request, user)
-            return redirect('/topsis')
+            return redirect('/')
         else:
             return render(request, 'topsis_app/login.html', {'error': 'Invalid credentials'})
     else:

@@ -1,0 +1,86 @@
+{% extends 'topsis_app/base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+<div class="container mt-5">
+    <!-- Introduction Section -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8">
+            <h1 class="text-center display-4 mb-4 text-light">Welcome to TOPSIS Model Ranking</h1>
+            <p class="text-center lead text-light">Rank your machine learning models using the TOPSIS method. Upload a CSV file with your models, assign weights and impacts to each attribute, and get ranked results instantly!</p>
+        </div>
+    </div>
+
+    <!-- Carousel for Info Cards -->
+    <div id="infoCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="card mb-4 border-0 shadow-sm bg-dark text-light">
+                            <div class="card-body">
+                                <h5 class="card-title">What is TOPSIS?</h5>
+                                <p class="card-text">TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution) helps identify the best option by measuring distance from the ideal and worst-case solutions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="card mb-4 border-0 shadow-sm bg-dark text-light">
+                            <div class="card-body">
+                                <h5 class="card-title">How It Works</h5>
+                                <p class="card-text">Upload a CSV of your models, specify weights and impacts for each attribute, and receive a ranked list of your models based on the TOPSIS method.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="card mb-4 border-0 shadow-sm bg-dark text-light">
+                            <div class="card-body">
+                                <h5 class="card-title">Get Started</h5>
+                                <p class="card-text">Visit the <strong>Rank Models</strong> page, upload your data, and view the ranked results. You can also review past rankings in the <strong>History</strong> section.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#infoCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#infoCarousel" data-bs-slide="next" style="color: white;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Steps Section -->
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+            <h2 class="text-center mb-4 text-light">How to Use the Website</h2>
+            <div class="list-group">
+                <a href="/topsis" class="list-group-item list-group-item-action bg-dark text-light">1. Visit the <span class="text-primary">Rank Models</span> page and upload your CSV file with model data.</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-light">2. Enter the weights for each attribute from the CSV file.</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-light">3. Specify the impact of each attribute (positive or negative).</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-light">4. View the ranked results of your models in the generated table.</a>
+                <a href="/history" class="list-group-item list-group-item-action bg-dark text-light">5. Review past rankings in the <span class="text-primary">History</span> section.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+{% endblock body %}

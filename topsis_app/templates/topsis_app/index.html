@@ -4,7 +4,48 @@
 
 {% block body %}
 <div class="container mt-5">
-  <h1 class="text-center mb-4">Welcome {{request.user}} to TOPSIS Algorithm</h1>
+  <h1 class="text-center mb-4">Welcome {{request.user}}</h1>
+  <div class="container mt-5">
+    <p class="text-center">Your CSV file should follow this format:</p>
+    
+    <!-- Example CSV Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Model Name</th>
+                    <th>Accuracy</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>F1 Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Model A</td>
+                    <td>0.85</td>
+                    <td>0.80</td>
+                    <td>0.78</td>
+                    <td>0.79</td>
+                </tr>
+                <tr>
+                    <td>Model B</td>
+                    <td>0.88</td>
+                    <td>0.82</td>
+                    <td>0.81</td>
+                    <td>0.82</td>
+                </tr>
+                <tr>
+                    <td>Model C</td>
+                    <td>0.90</td>
+                    <td>0.85</td>
+                    <td>0.83</td>
+                    <td>0.84</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
   <!-- Form Section -->
   <form method="post" enctype="multipart/form-data">
@@ -28,11 +69,12 @@
   </form>
 
   <!-- Results Section -->
-  <div class="card mt-5 shadow p-4">
+   
+  <div class="container mt-5">
       {% if result %}
         <h3 class="mb-4 text-center">Results</h3>
         <!-- Table for displaying TOPSIS results -->
-        <div class="table-responsive" style="display: flex; justify-content: center; align-items: center;">
+        <div class="table-responsive" style="display: flex; justify-content: center; align-items: center; color">
           {{ result|safe }}
         </div>          
       {% else %}
@@ -40,7 +82,5 @@
       {% endif %}
     </div>
 </div>
-
-<a href="/history">View Your TOPSIS Analysis History</a>
 
 {%endblock body%}
