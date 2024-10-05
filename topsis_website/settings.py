@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-=j!)ev7hu_ohhnd+i3l5+jf#)n8mt3=tu)j+nf*5ee%2#od(h2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://topsis-production.up.railway.app','topsis-production.up.railway.app']
+ALLOWED_HOSTS = ['topsis-production.up.railway.app']
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
