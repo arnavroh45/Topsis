@@ -25,8 +25,16 @@ SECRET_KEY = "django-insecure-=j!)ev7hu_ohhnd+i3l5+jf#)n8mt3=tu)j+nf*5ee%2#od(h2
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ['topsis-production.up.railway.app', 'localhost', '127.0.0.1']
 
-ALLOWED_HOSTS = ['topsis-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://topsis-production.up.railway.app']
+
+# Ensure these are set for HTTPS
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# If you're behind a proxy that sets the X-Forwarded-Proto header (common in PaaS like Railway)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
